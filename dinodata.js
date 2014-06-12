@@ -52,7 +52,15 @@ function setStatus (id, status) {
 
 
 function setTitle (id, title) {
-	// body...
+	for (var i = 0; i < allToDos.length; i++) {
+		if (allToDos[i].id === id){
+			allToDos[i].title = title;
+			return;
+
+
+		}
+				
+	};
 }
 
 
@@ -73,6 +81,10 @@ console.log("all items");
 console.log(getAll());
 console.log("setting status");
 setStatus(s, false);
+console.log()
+console.log("all items");
+console.log(getAll());
+setTitle (s, "eat yummy broccoli");
 console.log()
 console.log("all items");
 console.log(getAll());
