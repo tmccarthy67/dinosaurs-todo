@@ -39,7 +39,15 @@ function remove (id) {
 }
 
 function setStatus (id, status) {
-	// body...
+	for (var i = 0; i < allToDos.length; i++) {
+		if (allToDos[i].id === id){
+			allToDos[i].completed = status;
+			return;
+
+
+		}
+				
+	};
 }
 
 
@@ -55,8 +63,16 @@ create("frosting");
 console.log(getAll());
 console.log(get("8cf58c9d-8718-402e-b176-4dd1473b7fe0"));
 console.log(get(s));
-console.log(remove(s));
 console.log()
 console.log("all items");
 console.log(getAll());
-
+console.log("setting status");
+setStatus(s, true);
+console.log()
+console.log("all items");
+console.log(getAll());
+console.log("setting status");
+setStatus(s, false);
+console.log()
+console.log("all items");
+console.log(getAll());
