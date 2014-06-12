@@ -32,7 +32,10 @@ function get (id) {
 }
 
 function remove (id) {
-	// body...
+	for (var i = 0; i < allToDos.length; i++) {
+		if (allToDos[i].id === id)
+				return allToDos.splice(i, 1);
+	};
 }
 
 function setStatus (id, status) {
@@ -52,5 +55,8 @@ create("frosting");
 console.log(getAll());
 console.log(get("8cf58c9d-8718-402e-b176-4dd1473b7fe0"));
 console.log(get(s));
-
+console.log(remove(s));
+console.log()
+console.log("all items");
+console.log(getAll());
 
