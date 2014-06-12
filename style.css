@@ -3,3 +3,29 @@ h1 {
 	margin-bottom: 2em;
 	margin-top: 1.3em;
 }
+
+.todotitle {
+	font-size: 25px;
+}
+
+.tododone {
+	width: 20px;
+	vertical-align: middle;
+}
+
+.tododone input[type="checkbox"]{
+	margin:0;
+	line-height: normal;
+}
+
+.todoremove{
+	width: 20px;
+}
+
+.done{
+	color: #BBB;
+	text-decoration: line-through;
+	font-style: italic;
+
+
+}
