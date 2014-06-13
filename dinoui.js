@@ -2,6 +2,14 @@ function reload() {
     console.log("loaded");
     console.log(getAll());
     var items = getAll();
+    if (items.length===0) {
+        $("#dinotable").hide();
+        $("#emptylist").show();
+        return;
+    }
+    $("#dinotable").show();
+    $("#emptylist").hide();
+
     $("#todoitems").empty();
     for (i = 0; i < items.length; i++) {
         var item = items[i]

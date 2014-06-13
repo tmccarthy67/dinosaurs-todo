@@ -29,3 +29,10 @@ h1 {
 
 
 }
+
+#emptylist {
+	font-size: 2em;
+	text-align: center;
+	padding-top: 1.5em;
+	color: #1CB35C;
+}
