@@ -2,6 +2,20 @@
 
 var allToDos = new Array();
 
+function dinosave () {
+// save data to local storage
+localStorage.setItem("todoitems",JSON.stringify(allToDos));
+}
+
+function dinoload () {
+// load data from local storage
+allToDos = JSON.parse(localStorage.getItem("todoitems"));
+	if (allToDos === null)
+	 allToDos = []
+}
+
+
+
 function createGuid() {
 	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
 	var r = Math.random()*16|0, v = c === 'x' ? r : (r&0x3|0x8);
@@ -16,6 +30,7 @@ function create (title) {
 		"id": createGuid()
 	};
 	allToDos.push(newItem);
+	dinosave ();
 	return newItem.id;
 }
 
@@ -33,8 +48,11 @@ function get (id) {
 
 function remove (id) {
 	for (var i = 0; i < allToDos.length; i++) {
-		if (allToDos[i].id === id)
-				return allToDos.splice(i, 1);
+		if (allToDos[i].id === id) {
+				var a = allToDos.splice(i, 1);
+						dinosave ();
+						return a;
+					}
 	};
 }
 
@@ -42,11 +60,12 @@ function setStatus (id, status) {
 	for (var i = 0; i < allToDos.length; i++) {
 		if (allToDos[i].id === id){
 			allToDos[i].completed = status;
+			dinosave ();
 			return;
 
 
 		}
-				
+
 	};
 }
 
@@ -55,36 +74,14 @@ function setTitle (id, title) {
 	for (var i = 0; i < allToDos.length; i++) {
 		if (allToDos[i].id === id){
 			allToDos[i].title = title;
+			dinosave ();
 			return;
 
 
 		}
-				
+
 	};
 }
 
 
-var s=create("ice cream");
-create("sprinkles");
-create("vanilla");
-create("frosting");
-console.log(getAll());
-console.log(get("8cf58c9d-8718-402e-b176-4dd1473b7fe0"));
-console.log(get(s));
-console.log()
-console.log("all items");
-console.log(getAll());
-console.log("setting status");
-setStatus(s, true);
-console.log()
-console.log("all items");
-console.log(getAll());
-console.log("setting status");
-setStatus(s, false);
-console.log()
-console.log("all items");
-console.log(getAll());
-setTitle (s, "eat yummy broccoli");
-console.log()
-console.log("all items");
-console.log(getAll());
+	dinoload ()
