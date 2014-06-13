@@ -30,7 +30,12 @@ function reload() {
 $(function() {
     $("#inputtext").val("").focus();
     reload();
-
+    $('#inputtext').on("keyup", function(e) {
+        if (e.keyCode === 13) {
+            console.log("Enter was released");
+            $('#addbutton').click();
+        }
+    })
     $('#addbutton').on("click", function() {
 
         var text = $('#inputtext').val();
