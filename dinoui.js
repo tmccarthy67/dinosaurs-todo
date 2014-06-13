@@ -7,7 +7,7 @@ function reload() {
         var item = items[i]
         var id = item.id;
         console.log(item.title, item.completed)
-        var checkbox = $("<input>").attr("type", "checkbox");
+        var checkbox = $("<input>").attr("type", "checkbox").attr("todoitemid", id).prop('checked', item.completed)
         var tdCheckbox = $("<td>").append(checkbox).addClass('tododone');
         var tdTitle = $("<td>").addClass('todotitle').text(item.title);
         var spanRemove = $("<span>").addClass('glyphicon glyphicon-remove');
@@ -19,8 +19,21 @@ function reload() {
             reload();
         });
 
+        checkbox.change (function(){
+            console.log(this)
+            var todoid = $(this).attr("todoitemid");
+            var status = $(this).is(':checked');
+            console.log(todoid, status);
+            setStatus(todoid, status);
+                reload ();
+        })
+
         var tdRemove = $("<td>").addClass('todoremove').append(buttonRemove);
         var tr = $("<tr>").append(tdCheckbox).append(tdTitle).append(tdRemove);
+            if (item.completed) {
+                tr.addClass ("done")
+            }
+
         $("#todoitems").append(tr);
 
     }
