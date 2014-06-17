@@ -3,7 +3,7 @@ var fs = require('fs');
 var app = express();
 
 console.log(__dirname)
-app.use(express.static(__dirname));
+app.use(express.static(__dirname + '/client'));
 
 app.get('/', function(req, res) {
     fs.readFile('index.html', function (err, data) {
