@@ -1,18 +1,17 @@
 var express = require('express');
+var fs = require('fs');
 var app = express();
 
-app.get('/hello.txt', function(req, res) {
-    console.log("hello.txt executing")
-    res.send('Hello World');
-});
-
-app.get('/hello.bye', function(req, res) {
-    res.send('Goodbye World');
-});
+console.log(__dirname)
+app.use(express.static(__dirname));
 
 app.get('/', function(req, res) {
-    res.send('Home Screen');
+    fs.readFile('index.html', function (err, data) {
+  		if (err) throw err;
+  		res.send(data.toString());
+	});
 });
+
 
 console.log("Starting to listen");
 
