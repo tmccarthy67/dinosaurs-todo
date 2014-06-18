@@ -63,6 +63,12 @@ function reload() {
 
 
 $(function() {
+    $.get( "/test", function( data ) {
+       console.log( data );
+       console.log (data.title);
+   });
+    console.log ("sent request to the server");
+
     $("#inputtext").val("").focus();
     reload();
     $('#inputtext').on("keyup", function(e) {
