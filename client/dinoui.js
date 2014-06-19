@@ -69,6 +69,25 @@ $(function() {
    });
     console.log ("sent request to the server");
 
+    // $.ajax({
+    //     url: '/items/2',
+    //     type: 'DELETE',
+    //     success: function(result) {
+    //         // Do something with the result
+    //     }
+    // });
+
+    $.ajax({
+      type: "POST",
+      url: "/items/4",
+      data: JSON.stringify({title: 5,
+        completed: false,
+        id: 2}),
+      success: function (){alert("success")},
+      contentType: "application/json"
+
+    });
+
     $("#inputtext").val("").focus();
     reload();
     $('#inputtext').on("keyup", function(e) {
